@@ -267,7 +267,7 @@ void MainWindow::initNet()
 void MainWindow::sendfile()
 {
     //打开文件
-    QString filepath = QFileDialog::getOpenFileName(this,"打开文件",".");
+    QString filepath = QFileDialog::getOpenFileName(this,"发送文件",".");
 
     //用json发送文件
     QFile file(filepath);
