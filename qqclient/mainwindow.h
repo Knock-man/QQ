@@ -19,7 +19,8 @@ public:
     enum MsgType{
         msg = 1,
         enter,
-        left
+        left,
+        file
     };
     MainWindow(QWidget *parent,QString name_,QVector<bool> vct_,QStringList iconNameList_);
     //重写关闭事件
@@ -29,7 +30,8 @@ public:
     void getMsg();
     void entryMsg();
     void initNet();
-    void inituser();
+    //void inituser();
+    void sendfile();
 signals:
     //关闭窗口信号
     void closeWidget();
@@ -37,8 +39,8 @@ signals:
 private:
     Ui::MainWindow *ui;
     QString name;
-    QString ip = "127.0.0.1";
-    int port = 9765;
+    QString ipAddress = "127.0.0.1";
+    int port = 8765;
     QTcpSocket *socket;
     QVector<bool> vct;//在线用户
      QStringList iconNameList;

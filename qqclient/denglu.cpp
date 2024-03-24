@@ -27,8 +27,11 @@ denglu::denglu(QWidget *parent) :
         //加载图标
         btn->setIcon(QPixmap(str));
         //设置图标大小
-        btn->setIconSize(QSize(150,100));
+        btn->setIconSize(QSize(60,70));
+        btn->setMinimumSize(400, 60);
         btn->setText(nameList[i]);
+
+
         //设置透明
         btn->setAutoRaise(true);
         //设置文字图片一块显示

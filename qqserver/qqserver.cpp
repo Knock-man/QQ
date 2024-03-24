@@ -131,11 +131,12 @@ void *readMsg(void *arg)
             {
                 continue;
             }
+            break;
             // printf("%dread error\n", sock);
         }
         else if (str_len > 0)
         {
-            // std::cout << "接收数据" << buf << std::endl;
+            std::cout << "接收数据" << buf << std::endl;
             sendMsg(buf, sock);
             memset(buf, 0, sizeof(buf));
         }
@@ -145,8 +146,6 @@ void *readMsg(void *arg)
             break;
         }
     }
-    epoll_ctl(efd_sock, EPOLL_CTL_DEL, sock, NULL);
-    close(sock);
     mtx.lock();
     for (int i = 0; i < usercnt; i++)
     {
@@ -156,22 +155,25 @@ void *readMsg(void *arg)
             {
                 usersock[j - 1] = usersock[j];
             }
+            usercnt--;
+            break;
         }
-        break;
     }
-    usercnt--;
+    epoll_ctl(efd_sock, EPOLL_CTL_DEL, sock, NULL);
+    close(sock);
+
     mtx.unlock();
     return NULL;
 }
 void *sendMsg(char *buf, int sock)
 {
-    // std::cout << "准备发送数据" << buf << usercnt << std::endl;
+    std::cout << "准备发送数据" << buf << usercnt << std::endl;
     mtx.lock();
     for (int i = 0; i < usercnt; i++)
     {
 
         write(usersock[i], buf, strlen(buf));
-        // std::cout << "发送数据" << buf << std::endl;
+        std::cout << "发送数据" << buf << std::endl;
     }
     mtx.unlock();
     return NULL;
