@@ -32,6 +32,8 @@ public:
     void initNet();
     //void inituser();
     void sendfile();
+    void onReadRead();
+    void parseJsonData(const QByteArray& jsonData);
 signals:
     //关闭窗口信号
     void closeWidget();
