@@ -1,4 +1,4 @@
-#ifndef DENGLU_H
+﻿#ifndef DENGLU_H
 #define DENGLU_H
 
 #include <QWidget>

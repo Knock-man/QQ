@@ -1,4 +1,4 @@
-#include "denglu.h"
+﻿#include "denglu.h"
 #include "ui_denglu.h"
 #include <QIcon>
 #include<QWidget>
@@ -15,7 +15,7 @@ denglu::denglu(QWidget *parent) :
     this->setWindowTitle("QQ 2024");
     this->setWindowIcon(QIcon(":/images/qq.jpg"));
     QList<QString> nameList;
-    nameList<<"蔡徐坤"<<"华晨宇"<<"隔壁老樊"<<"丢火车"<<"南征北战"<<"陈奕迅"<<"周杰伦"<<"尚世达"<<"林俊杰";
+    nameList<<u8"蔡徐坤"<<u8"华晨宇"<<u8"隔壁老樊"<<u8"丢火车"<<u8"南征北战"<<u8"陈奕迅"<<u8"周杰伦"<<u8"尚世达"<<u8"林俊杰";
     QStringList iconNameList;
     iconNameList<<"1"<<"2"<<"3"<<"4"<<"5"<<"6"<<"7"<<"8"<<"9";
     QVector<QToolButton*> vect;

@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QTcpSocket>
 #include<QTime>
@@ -154,18 +154,18 @@ int i=0;
              QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
              ui->textBrowser->setTextColor(Qt::gray);
              ui->textBrowser->setCurrentFont(QFont("Times New Roman",8));
-             ui->textBrowser->append("["+_name+"]"+time+" 上线");
+             ui->textBrowser->append("["+_name+"]"+time+u8" 上线");
          }else if(type == 3)
          {
              QString _name = obj["name"].toString();
              QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
              ui->textBrowser->setTextColor(Qt::gray);
              ui->textBrowser->setCurrentFont(QFont("Times New Roman",8));
-             ui->textBrowser->append("["+_name+"]"+time+" 下线");
+             ui->textBrowser->append("["+_name+"]"+time+u8" 下线");
          }else if(type == 4)
          {
              QString time = QDateTime::currentDateTime().toString("hh:mm");
-             qDebug()<<"接收到的是文件";
+             qDebug()<<u8"接收到的是文件";
              // 提取文件名和文件数据
              QString fileName = obj["fileName"].toString();
              QString base64Data = obj["fileData"].toString();
@@ -229,7 +229,7 @@ int i=0;
                      tempFile.write(fileData);
                      tempFile.close();
                      // 提示用户保存文件
-                     QString filePath = QFileDialog::getSaveFileName(nullptr, "保存文件", "All Files (*)");
+                     QString filePath = QFileDialog::getSaveFileName(nullptr, u8"保存文件", "All Files (*)");
                      if (!filePath.isEmpty()) {
                          // 复制临时文件到用户指定的路径
                          if (!QFile::copy(tempFile.fileName(), filePath)) {
@@ -286,18 +286,18 @@ void MainWindow::getMsg()
             QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             ui->textBrowser->setTextColor(Qt::gray);
             ui->textBrowser->setCurrentFont(QFont("Times New Roman",8));
-            ui->textBrowser->append("["+_name+"]"+time+" 上线");
+            ui->textBrowser->append("["+_name+"]"+time+u8" 上线");
         }else if(type == 3)
         {
             QString _name = obj["name"].toString();
             QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
             ui->textBrowser->setTextColor(Qt::gray);
             ui->textBrowser->setCurrentFont(QFont("Times New Roman",8));
-            ui->textBrowser->append("["+_name+"]"+time+" 下线");
+            ui->textBrowser->append("["+_name+"]"+time+u8" 下线");
         }else if(type == 4)
         {
             QString time = QDateTime::currentDateTime().toString("hh:mm");
-            qDebug()<<"接收到的是文件";
+            qDebug()<<u8"接收到的是文件";
             // 提取文件名和文件数据
             QString fileName = obj["fileName"].toString();
             QString base64Data = obj["fileData"].toString();
@@ -313,7 +313,7 @@ void MainWindow::getMsg()
             btn->setIcon(QPixmap(":/images/file.png"));
             //设置图标大小
             btn->setIconSize(QPixmap(":/images/file.png").size());
-            btn->setText("下载   "+time);
+            btn->setText(u8"下载   "+time);
             // 设置图标和文本显示方式
             btn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
             btn->setAutoRaise(true);
@@ -359,7 +359,7 @@ void MainWindow::getMsg()
                     tempFile.write(fileData);
                     tempFile.close();
                     // 提示用户保存文件
-                    QString filePath = QFileDialog::getSaveFileName(nullptr, "保存文件", "All Files (*)");
+                    QString filePath = QFileDialog::getSaveFileName(nullptr, u8"保存文件", "All Files (*)");
                     if (!filePath.isEmpty()) {
                         // 复制临时文件到用户指定的路径
                         if (!QFile::copy(tempFile.fileName(), filePath)) {
